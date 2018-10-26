@@ -110,8 +110,10 @@ function pushregionsortcallback(hObject, eventData, figSortomatoGraph, figSortom
     %% Get the spot/track IDs that correspond to the graphed points.
     % These need to get converted to double for use as inputs to the Surfaces
     % Get methods.
+    
     statStruct = getappdata(figSortomatoGraph, 'statStruct');
-    inIDs = double(statStruct(statIdx).Ids(inPlotIdxs));
+    idoffset = min(statStruct(statIdx).Ids);
+    inIDs = double(statStruct(statIdx).Ids(inPlotIdxs)) - double(idoffset);
 
     %% Get the Imaris objects and create a factory.
     xImarisApp = getappdata(figSortomatoGraph, 'xImarisApp');
@@ -282,7 +284,6 @@ function pushregionsortcallback(hObject, eventData, figSortomatoGraph, figSortom
                 % sort are the IDs found by inpoly. The variable rename
                 % is for variable name consistency with track sorting.
                 inIdxs = inIDs;
-
                 %% Create a Spots instance for the sorted Spots.
                 sortSpots = xFactory.CreateSpots;
 
@@ -342,10 +343,14 @@ function pushregionsortcallback(hObject, eventData, figSortomatoGraph, figSortom
                 hStatus.setText(['Sorting ' rgnSortString])
                 hStatus.ProgressBar.setMaximum(length(inIdxs))
                 hStatus.ProgressBar.setVisible(true)
-
                 % Add the indicated surfaces to the sorted Surfaces.
                 for s = 1:length(inIdxs)
                     % Get the surface data for the current index.
+                    %for i = 0:1000
+                    %    xObject.GetNormals(i);
+                    %    i
+                    %end
+                    
                     sNormals = xObject.GetNormals(inIdxs(s));
                     sTime = xObject.GetTimeIndex(inIdxs(s));
                     sTriangles = xObject.GetTriangles(inIdxs(s));

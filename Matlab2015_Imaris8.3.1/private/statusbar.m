@@ -1,4 +1,7 @@
 function statusbarHandles = statusbar(varargin)
+warning('off', 'MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame');
+
+
 %statusbar set/get the status-bar of Matlab desktop or a figure
 %
 %   statusbar sets the status-bar text of the Matlab desktop or a figure.
