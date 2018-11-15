@@ -1,9 +1,7 @@
 # Sortomato
+
 The Sortomato is a utility for sorting Surpass objects into new objects based on their statistical properties. The Sortomato works with Spots and Surfaces objects. If the objects have custom statistical properties, they can also be used to sort the objects.
 
-Big Sortomato dependencies: 
-              
-    Matlab 2015
-    Imaris 8.3 or newer
-    
-    
+There are two versions of Sortomato available. Big Sortomato, has more analysis options, while Small Sortomato is qucik and compact. 
+
+Big Sortomato works with Matlab 2015 and Imaris 8.3 or newer. Small Sortomato has a couple download options depending on software versions used.
